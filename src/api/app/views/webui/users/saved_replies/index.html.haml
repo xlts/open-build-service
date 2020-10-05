@@ -1,0 +1,33 @@
+:ruby
+  @pagetitle = 'Saved replies'
+.card
+  .card-body
+    - if @saved_replies.present?
+      %h3 Saved Replies
+      .table-responsive
+        %table.table.table-sm.table-bordered.table-hover
+          %thead
+            %tr
+              %th Name
+              %th Body
+              %th Actions
+          %tbody
+            - @saved_replies.each do |saved_reply|
+              %tr
+                %td
+                  = link_to saved_reply.name, edit_my_saved_reply_path(saved_reply.id)
+                %td
+                  = saved_reply.body.truncate(50)
+                %td
+                  = link_to 'Remove', my_saved_reply_path(saved_reply.id), method: 'DELETE'
+    - else
+      %p
+        No saved replies
+
+  .card-body
+    %ul.list-inline
+      %li.list-inline-item.mr-3
+        %li.list-inline-item
+          = link_to(new_my_saved_reply_path) do
+            %i.fas.fa-plus-circle.text-primary
+            Create Saved Reply

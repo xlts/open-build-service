@@ -45,6 +45,8 @@ class User < ApplicationRecord
 
   has_many :notifications, -> { order(created_at: :desc) }, as: :subscriber, dependent: :destroy
 
+  has_many :saved_replies, -> { order(created_at: :desc) }, dependent: :destroy
+
   has_many :commit_activities
 
   has_many :status_message_acknowledgements, dependent: :destroy

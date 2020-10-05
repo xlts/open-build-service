@@ -1,9 +1,12 @@
+- if User.session
+  = render partial: 'webui/comment/saved_replies', locals: { comment_field_id: comment_field_id }
+
 = form_for(comment, method: form_method, remote: true, html: { class: "#{form_method}-comment-form" }) do |f|
   = hidden_field_tag :commentable_type, commentable.class.name
   = hidden_field_tag :commentable_id, commentable.id
   = f.hidden_field :parent_id, value: comment.parent_id
   ~ f.text_area :body, rows: '4', placeholder: 'Write your comment here... (Markdown markup is supported)', required: true,
-    class: 'w-100 mb-3 form-control comment-field'
+    class: 'w-100 mb-3 form-control comment-field', 'data-comment-field-id' => comment_field_id
   - case form_method
   - when :post
     = f.submit 'Add comment', class: 'btn btn-primary', data: { disable_with: 'Creating comment...' }

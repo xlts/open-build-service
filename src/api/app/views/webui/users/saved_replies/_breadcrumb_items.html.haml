@@ -1,0 +1,4 @@
+= render partial: 'webui/main/breadcrumb_items'
+- if current_page?(my_saved_replies_path)
+  %li.breadcrumb-item.active{ 'aria-current' => 'page' }
+    My Saved Replies

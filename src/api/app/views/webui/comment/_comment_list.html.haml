@@ -1,8 +1,8 @@
 - commentable.comments.without_parent.includes(:user).each do |comment|
-  = render partial: 'webui/comment/content', locals: { comment: comment, commentable: commentable, level: 1 }
+  = render partial: 'webui/comment/content', locals: { comment: comment, commentable: commentable, comment_field_id: "#{commentable.id}-#{comment.id}", level: 1 }
 
 .comment_new.mt-3
-  = render partial: 'webui/comment/new', locals: { commentable: commentable }
+  = render partial: 'webui/comment/new', locals: { commentable: commentable, comment_field_id: "#{commentable.id}-new" }
 
 :javascript
   $(document).ready(function() {

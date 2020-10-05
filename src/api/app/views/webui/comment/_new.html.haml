@@ -8,4 +8,4 @@
     in order to comment
 - else
   = render(partial: 'webui/comment/comment_field',
-   locals: { form_method: :post, comment: Comment.new, commentable: commentable })
+   locals: { form_method: :post, comment: Comment.new, commentable: commentable, comment_field_id: comment_field_id })

@@ -51,4 +51,5 @@
 //= require webui/image_templates.js
 //= require webui/kiwi_editor.js
 //= require webui/monitor.js
+//= require webui/saved_replies.js
 //= require webui/responsive_ux

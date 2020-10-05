@@ -1,0 +1,10 @@
+= form_for(saved_reply, url: form_url, method: form_method) do |form|
+  .form-group
+    = form.label(:name, 'Name:')
+    = form.text_field(:name, class: 'form-control', required: true)
+  .form-group
+    = form.label(:body, 'Body:')
+    = form.text_area(:body, rows: 8, class: 'form-control', required: true)
+  .form-group.text-right
+    = link_to 'Cancel', my_saved_replies_path, class: 'cancel btn btn-outline-danger px-4'
+    = submit_tag('Save', class: 'btn btn-primary px-4')

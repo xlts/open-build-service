@@ -1,0 +1,6 @@
+- if SavedReply.for_user(User.session).any?
+  .saved_replies.mb-1
+    %small.text-muted
+      Saved replies
+    = select_tag(:saved_replies, options_from_collection_for_select(SavedReply.for_user(User.session), 'id', 'name'), prompt: 'Choose a saved reply', class: 'saved_replies_input', 'data-comment-field-id' => comment_field_id)
+    - haml_tag :i, class: 'fas fa-spinner fa-spin invisible', 'data-comment-field-id' => comment_field_id

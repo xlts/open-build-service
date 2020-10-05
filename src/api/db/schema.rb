@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_110429) do
+ActiveRecord::Schema.define(version: 2020_09_30_153938) do
 
   create_table "architectures", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", null: false, collation: "utf8_general_ci"
@@ -919,6 +919,15 @@ ActiveRecord::Schema.define(version: 2020_07_03_110429) do
     t.index ["user_id", "role_id"], name: "roles_users_all_index", unique: true
   end
 
+  create_table "saved_replies", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_saved_replies_on_user_id"
+  end
+
   create_table "sessions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "session_id", null: false, collation: "utf8_unicode_ci"
     t.text "data"
@@ -1143,6 +1152,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_110429) do
   add_foreign_key "roles_static_permissions", "static_permissions", name: "roles_static_permissions_ibfk_2"
   add_foreign_key "roles_users", "roles", name: "roles_users_ibfk_2"
   add_foreign_key "roles_users", "users", name: "roles_users_ibfk_1"
+  add_foreign_key "saved_replies", "users"
   add_foreign_key "status_checks", "status_reports", column: "status_reports_id"
   add_foreign_key "tokens", "packages", name: "tokens_ibfk_2"
   add_foreign_key "tokens", "users", name: "tokens_ibfk_1"

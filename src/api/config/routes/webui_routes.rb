@@ -314,6 +314,8 @@ OBSApi::Application.routes.draw do
         end
       end
 
+      resources :saved_replies, only: [:index, :show, :new, :edit, :create, :update, :destroy], controller: 'webui/users/saved_replies', as: :my_saved_replies
+
       post 'rss_tokens' => :create, controller: 'webui/users/rss_tokens', as: :my_rss_token
       post 'status_messages/:id' => :acknowledge, controller: 'webui/status_messages', as: :acknowledge_status_message
     end
