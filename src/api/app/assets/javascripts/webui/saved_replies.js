@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.saved_replies_input').change(function() {
+  $('body').on('change', '.saved_replies_input', function() {
     var savedRepliesSelect = $(this);
     var savedReplyId = savedRepliesSelect.val();
     var commentableId = savedRepliesSelect.attr('data-comment-field-id');

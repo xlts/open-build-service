@@ -1,4 +1,4 @@
-- if SavedReply.for_user(User.session).any?
+- if User.session && SavedReply.for_user(User.session).any?
   .saved_replies.mb-1
     %small.text-muted
       Saved replies
